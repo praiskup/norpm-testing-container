@@ -1,0 +1,8 @@
+#! /bin/bash
+
+cd /rpm-specs
+for i in *.spec; do
+    echo -n $i:
+    out=$(rpmspec -q --qf "%{epoch}:%{version}\n" $i 2>/dev/null | head -1)
+    echo $out
+done | tee >(cat >&2) | sort > /rpmspec.output
