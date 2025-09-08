@@ -4,6 +4,7 @@ RUN dnf -y install python3-specfile \
                    redhat-rpm-config \
                    rpm-build \
                    golang-oras \
+                   python3-ply \
     && dnf clean all
 
 RUN oras pull quay.io/norpm/rawhide-specfiles:latest
