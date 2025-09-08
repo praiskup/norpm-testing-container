@@ -14,7 +14,7 @@ metadata:
     appstudio.openshift.io/application: norpm
     appstudio.openshift.io/component: norpm-testing-image
     pipelines.appstudio.openshift.io/type: build
-  name: environment-on-push
+  name: norpm-testing-image-on-push
   namespace: fedora-copr-tenant
 spec:
   params:
