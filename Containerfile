@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:42@sha256:87278f24ac7fcddf323f02ae553e86b711905b5f095e442d1bf7fe39914dc6d0
+FROM registry.fedoraproject.org/fedora:44@sha256:c76c0a41b769676815b904ba5447ff07b719309a8edcda8caa136cbf680c5542
 
 RUN dnf -y install python3-specfile \
                    redhat-rpm-config \
