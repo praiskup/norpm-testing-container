@@ -7,7 +7,7 @@ RUN dnf -y install python3-specfile \
                    python3-lark \
     && dnf clean all
 
-RUN oras pull quay.io/norpm/rawhide-specfiles@sha256:6ee7b1ba77bd9478fbc9e619f0cff096cb00439bc3974907c21a61797ee96dea
+RUN oras pull quay.io/norpm/rawhide-specfiles@sha256:fb8f8be90b25dd7d38f587553ffc9806566bf2618b8022dd29543596b14dcbc4
 
 RUN tar xf rpm-specs-latest.tar.xz
 
