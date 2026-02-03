@@ -1,10 +1,10 @@
-FROM registry.fedoraproject.org/fedora:42@sha256:87278f24ac7fcddf323f02ae553e86b711905b5f095e442d1bf7fe39914dc6d0
+FROM registry.fedoraproject.org/fedora:43@sha256:a08659cad3f9c8279e70bea1feee02162a1751bda3103c55ba437707fa8efeca
 
 RUN dnf -y install python3-specfile \
                    redhat-rpm-config \
                    rpm-build \
                    golang-oras \
-                   python3-ply \
+                   python3-lark \
     && dnf clean all
 
 RUN oras pull quay.io/norpm/rawhide-specfiles:latest
