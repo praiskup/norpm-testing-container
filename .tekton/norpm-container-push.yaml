@@ -38,6 +38,8 @@ spec:
         value: main
       - name: pathInRepo
         value: .tekton/multi-arch-build-pipeline.yaml
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-norpm-testing-image
   workspaces:
   - name: git-auth
     secret:
