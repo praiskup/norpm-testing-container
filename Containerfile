@@ -13,5 +13,11 @@ RUN oras pull quay.io/norpm/rawhide-specfiles@sha256:fb8f8be90b25dd7d38f587553ff
 RUN tar xf rpm-specs-latest.tar.xz
 
 ADD rpmspec-epoch-version /rpmspec-epoch-version
-
 RUN /rpmspec-epoch-version
+
+ADD exclude-statements /exclude-statements
+RUN /exclude-statements
+
+ADD expand_exclusive_arch.py /expand_exclusive_arch.py
+ADD expand-exclusive-arch-all /expand-exclusive-arch-all
+RUN /expand-exclusive-arch-all
