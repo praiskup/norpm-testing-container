@@ -1,0 +1,41 @@
+#! /bin/bash
+
+cd /rpm-specs || exit 1
+
+workdir=/exclude-wip
+destination=/rpm-specs-parsed
+
+mkdir "$workdir"
+mkdir "$destination"
+
+for spec in *.spec; do
+    echo "Handling $spec"
+    rpmspec --parse "$spec" >"$workdir/$spec" 2>"$workdir/$spec.errorout"
+    if test $? -eq 0; then
+        mv "$workdir/$spec" "$destination"
+    else
+        touch "$workdir/$spec.failed"
+    fi
+done
+
+cd "$destination" || exit 1
+
+
+list_of_files=/some-exclusion-found.txt
+cmd=(grep -i -e excludearch -e exclusivearch)
+
+# Go through the plain list of files
+for spec in *spec; do
+    if "${cmd[@]}" "$spec"; then
+        echo "$spec" >> "$list_of_files.raw"
+    fi
+done
+
+# Go through the parsed list of files
+for spec in *spec; do
+    if "${cmd[@]}" "$spec"; then
+        echo "$spec" >> "$list_of_files.raw"
+    fi
+done
+
+sort "$list_of_files.raw" | uniq > "$list_of_files"

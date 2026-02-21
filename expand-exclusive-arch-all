@@ -1,0 +1,12 @@
+#! /bin/bash
+
+list_of_files=/some-exclusion-found.txt
+
+cd /rpm-specs
+
+destdir=/rpm-specs-arches
+mkdir "$destdir"
+
+while read -r i; do
+    /expand_exclusive_arch.py "$i" > "$destdir/$i".json
+done < "$list_of_files"
