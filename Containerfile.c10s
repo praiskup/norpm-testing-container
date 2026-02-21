@@ -1,0 +1,20 @@
+FROM quay.io/centos/centos:stream10@sha256:f8b21dfbad9d784b61e4634c5c76c635e51dae6f84ddda235502b23cecaca7b4
+
+RUN dnf -y install epel-release \
+    && dnf install -y \
+                   python3-specfile \
+                   redhat-rpm-config \
+                   rpm-build \
+                   python3-lark \
+      --enablerepo epel-testing \
+    && dnf clean all
+
+RUN cd /usr/local/bin ; curl --location https://github.com/oras-project/oras/releases/download/v1.3.0/oras_1.3.0_linux_amd64.tar.gz | tar xz
+
+RUN oras pull quay.io/norpm/c10s-specfiles@sha256:83ad6e20f6740c9608fc41c6472c76cad79ff6e90accc6063845e9cdefc2e016
+
+RUN tar xf rpm-specs-latest.tar.xz
+
+ADD rpmspec-epoch-version /rpmspec-epoch-version
+
+RUN /rpmspec-epoch-version
