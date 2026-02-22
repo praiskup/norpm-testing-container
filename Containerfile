@@ -12,6 +12,7 @@ RUN oras pull quay.io/norpm/rawhide-specfiles@sha256:fb8f8be90b25dd7d38f587553ff
 
 RUN tar xf rpm-specs-latest.tar.xz
 
+ADD https://raw.githubusercontent.com/praiskup/norpm-macro-overrides/refs/heads/main/distro-arch-specific.json /
 ADD rpmspec-epoch-version /rpmspec-epoch-version
 RUN /rpmspec-epoch-version
 
