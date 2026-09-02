@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:stream10@sha256:f8b21dfbad9d784b61e4634c5c76c635e51dae6f84ddda235502b23cecaca7b4
+FROM quay.io/centos/centos:stream10@sha256:301bc4e6d5af2b6e707bec46aa71c21dc91ebc97422373cca37ea98d0e1aed63
 
 RUN dnf -y install epel-release \
     && dnf install -y \
